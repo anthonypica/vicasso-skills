@@ -61,27 +61,27 @@ A Salesforce partner since 2009, Vicasso provides six case management and custom
 
 ## Repository structure
 
-Skills are expected to be grouped by the Vicasso app they support. The exact structure may evolve as skills are published. As of August 20, 2026, Vicasso provides skills for Simple Survey and Case Flags.
+Skills are organized under their corresponding Vicasso apps. Each skill is stored in its own directory using the following pattern:
+
+`plugins/<app-slug>/skills/<skill-slug>/`
 
 ```text
 vicasso-skills/
-├── email-to-case-premium/
-│   └── SKILL.md
-├── case-flags/
-│   └── SKILL.md
-├── case-merge-premium/
-│   └── SKILL.md
-├── file-slayer/
-│   └── SKILL.md
-├── case-split/
-│   └── SKILL.md
-├── simple-survey/
-│   └── SKILL.md
+├── plugins/
+│   └── <app-slug>/
+│       └── skills/
+│           └── <skill-slug>/
+│               └── SKILL.md
 ├── LICENSE
 └── README.md
 ```
 
 Each published skill directory will contain a `SKILL.md` file and any supporting resources required by that skill.
+
+Vicasso currently provides skills for:
+
+- [Case Flags](http://github.com/VicassoAI/vicasso-skills/plugins/case-flags/skills)
+- [Simple Survey](http://github.com/VicassoAI/vicasso-skills/plugins/case-flags/skills)
 
 ## Prerequisites
 
