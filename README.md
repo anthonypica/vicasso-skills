@@ -67,6 +67,8 @@ Skills are organized under their corresponding Vicasso apps. Each skill is store
 
 ```text
 vicasso-skills/
+├── .claude-plugin/
+│   └── marketplace.json
 ├── plugins/
 │   └── <app-slug>/
 │       └── skills/
@@ -97,21 +99,59 @@ Vicasso Skills do not include or replace Salesforce MCP, grant Salesforce access
 
 ## Getting started
 
-Platform-specific installation steps vary by AI platform. Until platform-specific guides are added, use this general process:
+Installation steps vary by AI platform.
 
-1. Choose a skill for the Vicasso app and workflow you want to use.
+### Claude
 
-2. Review the skill's `SKILL.md` file, including its supported actions.
+#### For individual usage
 
-3. Copy or import the skill according to your AI platforms skills instructions.
+Individual Claude users on paid plans can add this repository as a plugin marketplace:
 
-4. Connect and authenticate your Salesforce MCP server in the AI platform.
+[Anthropic's plugin guide for individuals](https://support.claude.com/en/articles/13837440-use-plugins-in-claude#h_9ce531e6c7)
 
-5. Confirm that the Salesforce user and MCP tools expose only the data and actions required for the workflow.
+1. In Claude web, open the **Customize** menu in the left sidebar.
+2. Click the **Plugins** tab.
+3. Click **Add** then click **Add marketplace**.
+4. Enter `https://github.com/VicassoAI/vicasso-skills` as the repository.
+5. Install the Vicasso skills you want.
+
+> [!NOTE]
+> On Enterprise plans, administrators may restrict which plugins users can install.
+
+#### For org-wide usage
+
+Team and Enterprise owners can distribute Vicasso Skills to all users:
+
+[Anthropic's plugin guide for organizations](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization)
+
+1. In Claude, navigate to **Organization settings**.
+2. Click **Plugins** under Libraries & Access.
+3. Click **Add plugins**.
+4. Choose **Sync from Github**.
+
+> [!IMPORTANT]
+> For organizations, Claude requires the connected repository to be private.
+> This involves creating a small private catalog repo in your GitHub org that references this repository.
+> Vicasso customers may contact us for assistance.
+
+Installing Vicasso Skills through the marketplace makes it easy to stay current as Vicasso publishes improvements.
+
+### Other AI platforms
+
+Setup instructions for other AI platforms to be added. You can also download the skill directory including the SKILL.md content to manually add to your AI platform, but you will not receive updates from Vicasso.
+
+## Using Vicasso skills
+
+Before using a Vicasso Skill, make sure Salesforce MCP is configured, connected, and authenticated for your Salesforce org.
+
+After installation, type `/` or click the `+` button in chat to view the skills available from your installed plugins.
 
 ## Security and governance
 
-Vicasso Skills provide instructions to an AI agent; they do not grant Salesforce access or create a separate security boundary. What an agent can read or change is governed by the authenticated Salesforce identity, the MCP configuration and enabled tools, and your Salesforce security model.
+Vicasso Skills provide instructions to an AI agent. They do not grant Salesforce access or create a separate security boundary. What an agent can read or change is governed by the authenticated Salesforce identity, the MCP configuration and enabled tools, and your Salesforce security model.
+
+> [!CAUTION]
+> Understand your Salesforce org's security and privacy before installing and using any AI skills.
 
 * Follow Salesforce platform security best practices, including least-privilege access, appropriate permission sets, object permissions, field-level security, sharing rules, and narrowly scoped OAuth access. Prefer read-only MCP tools when write access is unnecessary.
 * Require human review or confirmation for consequential actions, customer communications, and employee coaching or personnel decisions.
